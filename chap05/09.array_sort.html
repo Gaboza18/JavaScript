@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배열 요소의 역순정렬</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var users = ["홍길동", "김좌진", "이순신", "유관순"];
+
+                // sort() 내의 함수는 비교하는 방법을 지정하는 기능
+                // 오름차순 정렬: a가 크면 1, 같으면 0, a가 작으면 -1 리턴 -> 역순은 조건을 반대로 설정한다.
+                users.sort(function (a, b) {
+
+                    if (a > b) { // a가 클때 -1 리턴
+                        return -1;
+                    }
+                    if (a < b) { // a가 작을때 1 리턴 
+                        return 1;
+                    }
+                    return; // 같을때 
+                });
+
+                console.log("역순 정렬: " + users.join(","));
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #parent {
+                width: 300px;
+                height: 100px;
+                position: absolute;
+                left: 200px;
+                top: 100px;
+                background: #ffff00;
+                border: 1px solid #f00;
+                overflow: hidden;
+            }
+
+            #child {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 100px;
+                top: 0px;
+                background: #ff00ff;
+            }
+
+            #child div {
+                height: 100px;
+                text-align: center;
+                line-height: 100px;
+            }
+
+            #child div.over {
+                background-color: #0ff;
+                ;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="info">
+            이벤트 정보 출력
+        </div>
+        <div id="parent">
+            parent
+            <div id="child">
+                <div>
+                    out
+                </div>
+                <div class="over">
+                    over
+                </div>
+            </div>
+        </div>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var $parent = $("#parent");
+                var $child = $("#child");
+                var $info = $("#info");
+
+                $parent.on("mouseover", function (e) {
+                    $info.html($info.html() + "<br>" + e.target.id + ".over");
+                    $child.animate({
+                        top: -100
+                    }, 300);
+                });
+
+                $parent.on("mouseout", function (e) {
+                    $info.html($info.html() + "<br>" + e.target.id + ".out");
+                    $child.animate({
+                        top: 0
+                    }, 300);
+                });
+            });
+        </script>
+    </body>
+
+</html>

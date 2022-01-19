@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>세자리 수마다 , 입력하기</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            #output {
+                width: 500px;
+                height: 400px;
+                border: 1px solid #000;
+                text-align: center;
+                line-height: 400px;
+            }
+        </style>
+        <!-- jQuery 선언 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div>
+            <input type="text" id="input">
+            <button id="confirm">확인</button>
+        </div>
+
+        <div id="output">
+            임의의 숫자를 입력하면 세자리 수마다 , 찍어서 출력합니다.
+        </div>
+        <script type="text/javascript">
+            // 각 요소를 jQuery 변수에 저장
+            var $input = $("input");
+            var $button = $("#confirm");
+            var $output = $("#output");
+
+            $button.on("click", function () { // 확인을 누르면 실행되는 함수
+                // 입력에서 데이터를 읽는다.
+                var data = $input.val(); // 텍스트 입력창에서 값을 읽는다.
+
+                // 입력된 데이터를 , 넣어서 변환
+                var result = commaConversion(data); // 입력값을 result에 저장
+
+                // 변환 결과를 화면에 출력
+                $output.text(data + " --> " + result);
+            });
+
+            /* 
+                입력 매개변수: data : 입력된 숫자.
+            */
+            function commaConversion(data) {
+                // 3자리 이하가 입력이 되었을떄 변환 없이 값 return
+                if (data.length <= 3) return data;
+
+                // 삽입할 콤마의 수 계산 
+                var comma_count = Math.floor(data.length / 3); // 입력한 숫자의 내림값 알아낸다.
+                if (data.length % 3 == 0) {
+                    comma_count--; // 입력한 숫자의 길이가 3으로 나누어 떨어지면 맨앞에 , 없앤다 ex)123456 -> ,123,465 (x) 123,456 (o) 출력
+                }
+                var convStr = ""; // 변환될 문자열을 저장하는 변수 선언 
+                for (var i = 0; i < comma_count; i++) {
+
+                    var strlen = data.length; // 현재 문자열의 길이를 저장
+                    convStr = "," + data.substr(strlen - 3, 3) + convStr; // 현재 문자열에서 끝에서 3자리를 잘라낸다. + 이전에 잘라낸 값을 더한다.
+
+                    // 처리된 끝에서 3자리를 문자열을 잘라낸다.
+                    data = data.slice(0, strlen - 3);
+                }
+
+                convStr = data + convStr; // 3자리씩 자르고 남은 나머지 숫자를 앞에 붙여준다.
+                return convStr;
+            }
+        </script>
+    </body>
+
+</html>

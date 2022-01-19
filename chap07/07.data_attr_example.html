@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>데이터 속성값 읽기</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="panel" data-name="장보고" data-tel="010-1234-5678" data-img="./wdn_logo.png" temp-data="test1">
+            <p>장보고</p>
+            <p>010-1234-5678</p>
+            <img src="../chap07/images/99818D3F5C95936E0C.jpg">
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var $panel = $(".panel");
+                // data() 함수에서 data- 를 제외한 속성이름을 넣어준다
+                console.log("data-name = " + $panel.data("name"));
+                console.log("data-tel = " + $panel.data("tel"));
+                console.log("data-img = " + $panel.data("img"));
+
+                // data로 시작하지 않는 속성은 attr() 사용
+                console.log("temp-data = " + $panel.attr("temp-data"));
+            });
+        </script>
+    </body>
+
+</html>

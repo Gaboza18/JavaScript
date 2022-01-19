@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>String 관련 함수</title>
+        <!-- jQuery 선언 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- CSS 선언 -->
+        <link rel="stylesheet" href="CSS/c03.css">
+    </head>
+
+    <body>
+        <h1>TravelWorthy</h1>
+        <div id="info"></div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var $output = $("#info");
+                var saying = "Home sweet home ";
+
+                var msg = "Text: " + saying;
+
+                // 문자열의 길이
+                msg += "<h2>length</h2><p>" + saying.length + "</p>";
+
+                // 모든 문자를 대문자로 변환
+                msg += "<h2>대문자 변환</h2><p>" + saying.toUpperCase() + "</p>";
+                $output.html(msg);
+
+                // 모든 문자를 소문자로 변환
+                msg += "<h2>소문자 변환</h2><p>" + saying.toLowerCase() + "</p>";
+                $output.html(msg);
+
+                // n번째 문자 출력
+                msg += "<h2>12번째 인덱스의 문자</h2><p>" + saying.charAt(12) + "</p>";
+                $output.html(msg);
+
+                msg += "<h2>첫번째 me의 위치</h2><p>" + saying.indexOf("me") + "</p>";
+                $output.html(msg);
+
+                msg += "<h2>마지막 me의 위치</h2><p>" + saying.lastIndexOf("me") + "</p>";
+                $output.html(msg);
+
+                msg += "<h2>인덱스 8~14사이의 문자열</h2><p>" + saying.substring(8, 14) + "</p>"; // 마지막 문자는 포함되지 않는다
+                $output.html(msg);
+
+                msg += "<h2>인덱스 5번부터 5개의 문자열</h2><p>" + saying.substr(5, 5) + "</p>";
+                $output.html(msg);
+
+                // 두번째 매개변수가 문자열인 경우 첫번째 나타나는 문자열만 치환
+                msg += "<h2>첫 번째 문자열을 두번째 문자열로 치환</h2><p>" + saying.replace('me', 'w') + "</p>";
+                $output.html(msg);
+
+                // 문자열 패턴을 사용한 경우(me - > w 치환)
+                msg += "<h2>첫 번째 문자열을 두번째 문자열로 치환</h2><p>" + saying.replace(/me/g, "w") + "</p>";
+                $output.html(msg);
+
+                msg += "<h2>Home 단어를 대/소문자 구분하지 않고 Country로 변환</h2><p>" + saying.replace(/home/ig, "country") + "</p>";
+                $output.html(msg);
+
+                // 문자열 자르기 
+                var data = "문자열자르기 slice()";
+                msg += "<h2>문자열 자르기</h2><p>" + data.slice(0, 6) + "-" + data.slice(6, data.length);
+                $output.html(msg);  
+
+            });
+        </script>
+    </body>
+
+</html>

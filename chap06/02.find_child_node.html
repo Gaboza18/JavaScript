@@ -1,0 +1,106 @@
+<html>
+
+	<head>
+		<title>조상,부모,자식,형제 노드 찾기</title>
+		<style>
+			body {
+				font-size: 9pt;
+				font-family: "굴림";
+			}
+
+			div,
+			p,
+			ul,
+			li {
+				border: 1px #eeeeee solid;
+				margin: 10px;
+			}
+
+			ul {
+				padding: 10px;
+			}
+
+			li.select {
+				background-color: #ccc;
+			}
+		</style>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<div id="samplePage" class="page">
+			샘플 페이지(div, id=samplePage, class=page)
+			<div id="header">
+				헤더 영역(div, id=header)
+			</div>
+			<div id="content" class="sample-content">
+				노드 찾기(div, id=content, class=sample-content)
+				<ul class="menu">
+					일반 노드 찾기(ul, class=menu)
+					<li>id로 찾기(li)</li>
+					<li class="select">tag로 찾기(li, class=select)</li>
+					<li>class로 찾기(li)</li>
+					<li class="test1">속성으로 찾기(li, class=test1)</li>
+				</ul>
+				<div class="content-data">
+					자식 노드 찾기(div, class=content-data)
+					<p class="test1">1. 모든 자식 노드 찾기(p, class=test1)</p>
+					<p>2. 특정 자식 노드만 찾기(p)</p>
+					<p class="test2">3. 마지막 자식 노드 찾기(p, class=test2)</p>
+				</div>
+			</div>
+			<div id="footer">
+				푸터 영역(div, id=footer)
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			// id가 samplePage인 노드의 모든 자식노드 찾기
+			// var $children = $("#samplePage").children();
+			// $children.css("border", "4px solid #f00");
+			// console.log($children.length);
+
+			// 특정 자식 노드를 찾을때(samplePage 자식노드중 header만 찾기)
+			// var $target = $("#samplePage").children("#header");
+			// $target.css("border", "4px solid #f00");
+
+			// 첫번째 자식 노드를 찾을 때 .children()
+			 var $menu = $("ul.menu");
+			// $menu.children().first().css("border", "4px solid #f00");
+
+			// 마지막 자식 노드를 찾을 때
+			// $menu.children().last().css("border", "4px solid #f00"); // 1번 방법
+			// $menu.children(":last").css("border", "4px solid #f00"); // 2번 방법
+			// $menu.children().eq(-1).css("border", "4px solid #f00"); // 3번 방법
+
+			// n번째 자식 노드 찾기
+			// $menu.children().eq(2).css("border", "4px solid #f00"); // index가 2번인 노드 찾는다	
+
+			// 부모 노드 찾기 .parent()
+			// $menu.parent().css("border", "4px solid #f00"); // 바로 위에 노드를 찾는다
+
+			// 조상 노드 찾기 .parents()
+			// $menu.parents().css("border", "4px solid #f00"); // 자신 위에 모든 노드 찾는다
+
+			// 형제 노드 찾기
+			// ul.menu에서 특정 노드 지정
+			// var $select = $("ul.menu li.select");
+
+			// 이전노드 찾기
+			// $select.prev().css("border", "4px solid #f00");
+
+			// 다음노드 찾기
+			// $select.next().css("border", "4px solid #f00");
+
+			// 마지막 자식노드에 모든 이전노드 찾기
+			// var $last = $("ul.menu").children().last();
+			// $last.prevAll().css("border", "4px solid #f00");
+			
+			// 첫번째 자식 노드의 모든 다음 노드 찾기
+			 var $first = $("ul.menu").children().first();
+			 $first.nextAll().css("border", "4px solid #f00"); 
+
+		</script>
+	</body>
+
+</html>

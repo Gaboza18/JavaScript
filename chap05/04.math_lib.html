@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Math 라이브러리</title>
+        <!-- jQuery 선언 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- CSS 선언 -->
+        <link rel="stylesheet" href="CSS/c03.css">
+    </head>
+
+    <body>
+        <h1>TravelWorthy</h1>
+        <div id="info"></div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var $output = $("#info");
+                var msg = " "; // 함수 실행 결과 저장
+
+                // 1~100 사이 랜덤숫자 생성
+                var randomNum = Math.ceil(Math.random() * 100); // Math.ceil( 랜덤숫자 함수) -> 소수점 반올림후 정수처리
+                msg += "기본 랜덤 숫자: " + randomNum + "<br>";
+
+                /*
+                // 80보다 작은 랜덤 숫자
+                var minNum = Math.min(80, randomNum);
+                msg += "80보다 작은 랜덤숫자: " + minNum + "<br>"; // 80과 랜덤숫자를 비교해 80보다 작으면 랜덤숫자 출력, 크면 80 출력
+                */
+
+                /*
+                // 30보다 큰 랜덤 숫자
+                var maxNum = Math.max(30, randomNum);
+                msg += "30보다 큰 랜덤숫자: " + maxNum + "<br>"; // 30과 랜덤숫자를 비교해 30보다 크면 랜덤숫자 출력, 작으면 30 출력
+                */
+
+                // 30<랜덤숫자<80 출력
+                var value = Math.min(80, Math.max(30, randomNum)); // (80, (랜덤숫자>30)) 
+                msg += "30~80 사이 랜덤숫자: " +value+ "<br>";
+
+
+                $output.html(msg);
+
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>timeout 예제</title>
+        <!-- jQuery 선언 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- CSS 선언 -->
+        <link rel="stylesheet" href="CSS/c03.css">
+    </head>
+
+    <body>
+        <h1>TravelWorthy</h1>
+        <div id="info">3초후 바뀝니다.</div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var $output = $("#info");
+                var msg = "JS 세계에 오신것을 환영합니다!";
+
+                setTimeout(function () {
+                    $output.html("<h2>" + msg + "</h2>");
+                }, 3000); /* 1000msec = 1초 / 브라우저 실행후 n초뒤 실행*/
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>노드 생성 및 추가</title>
+        <style>
+            .menu {
+                list-style: none;
+            }
+
+            ul.menu li {
+                width: 200px;
+                /* 1.5배 */
+                font-size: 1.5rem;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+                text-align: center;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <button id="btnadd">추가</button>&nbsp;&nbsp;
+        <button id="btnremove">모든 메뉴삭제</button>&nbsp;&nbsp;
+        <button id="btnok">노드 내용 읽기</button>
+
+        <ul class="menu">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li class="select">menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+            <li>menu6</li>
+        </ul>
+        <hr>
+        <ul class="new_menu">
+
+        </ul>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var count = 0;
+                var $menu = $("ul.menu"); // $menu -> 부모노드
+
+                // 1. 노드 추가
+                $("#btnadd").on("click", function () {
+                    count++; // 버튼 클릭마다 증가한다
+                    var $item = $("<li>new menu" + count + "</li>"); // 메뉴증가
+                    console.log($item.get(0));
+
+                    // (1) 부모노드에 신규노드 추가
+                    // $menu.prepend($item); // 리스트 맨앞에 추가한다(부모노드 바로 밑)
+
+                    // (2) 추가할 노드를 기준으로 부모노드에 첫번째 노드로 추가
+                    // $item.prependTo($menu);
+
+                    // (3) 부모노드의 마지막에 신규노드 추가
+                    // $menu.append($item);
+
+                    // (4) 추가할 노드를 기준으로 부모노드의 마지막에 추가
+                    // $item.appendTo($menu);
+
+                    // (5) 특정 노드를 기준으로 앞에 신규노드 추가
+                    // var $base = $("li.select");
+                    // $base.before($item);
+
+                    // (6) 신규노드를 기준노드 앞에 추가
+                    // $item.insertBefore($base);
+
+                    // (7) 기준노드 뒤에 신규노드 추가 
+                    // $base.after($item);
+
+                    // (8) 신규노드를 기존노드 뒤에 추가
+                    // $item.insertAfter($base);
+                });
+
+                // 2. 노드 이동
+                var $menu = $("ul.menu");
+                // (1) 부모 노드를 기준으로 클릭한 메뉴이동
+                var $menuItems = $("ul.menu li");
+
+                $menuItems.on("click", function () {
+
+                    // this : 클릭한 노드를 참조
+                    // 부모 노드내에서 제일 앞으로 이동
+                    // $menu.prepend(this); // 클릭한 요소가 객체가 되어서 맨앞으로 이동한다.
+
+                    // 부모 노드내에서 제일 뒤로 이동
+                    // $menu.append(this);
+
+                    // 클릭한 노드 삭제
+                    $(this).remove();
+                });
+
+                // 3. 모든 메뉴 삭제 
+                $("#btnremove").on("click", function () {
+                    $menu.children().remove();
+                });
+
+                // 4. 노드 내용의 확인
+                var $btnok = $("#btnok");
+                // 텍스트 내용 읽기
+                console.log("'ok' 버튼의 텍스트 내용: " + $btnok.text());
+                // 태그의 내용 읽기
+                console.log("'menu' 목록의 HTML 내용: " + $menu.html());
+
+                // 5. 노드 내용의 수정
+                $("#btnadd").on("click", function () {
+                    // $("ul.new_menu").html("<li>새로운 메뉴</li>");
+
+                    // 여러개의 자식노드 추가
+                    var str = "";
+                    for (var i = 1; i <= 5; i++) {
+                        str += "<li>menu" + i + "</li>";
+                    }
+                    $("ul.new_menu").html(str);
+
+                    // 여러개의 자식노드 삭제
+                    setTimeout(function(){ // 2초후에 추가된 자식노드 삭제
+                        $("ul.new_menu").html("");
+                    },2000);
+                });
+
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>클래스 추가/삭제</title>
+        <style>
+            body {
+                font-size: 14px;
+            }
+
+            ul.menu {
+                padding: 10px;
+                list-style: none;
+            }
+
+            ul.menu li {
+                width: 200px;
+                /* 1.5배 */
+                font-size: 1.5rem;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+                text-align: center;
+            }
+
+            li.select {
+                background-color: #ccc;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var $content = $("ul.menu li");
+
+                // 각 메뉴 항목 클릭시, select 클래스 추가 또는 삭제
+                $content.on("click", function(){
+                    $item = $(this); // 리스트를 클릭할때 각 요소
+
+                    // 대상객체에 지정된 클래스가 있는지 확인하는 함수
+                    if($item.hasClass("select")){ // select 클래스를 포함한 객체일때만
+                        $item.removeClass("select"); // select 클래스 삭제
+                    }else{
+                        $item.addClass("select"); // select 클래스 추가
+                        // $item.addClass("select test1 test2"); // 여러개 클래스 지정시
+                    }
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <button id="btn">실행</button>&nbsp;&nbsp;
+        <ul class="menu">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li class="select">menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+            <li>menu6</li>
+        </ul>
+    </body>
+
+</html>

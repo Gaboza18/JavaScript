@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title> </title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-size: 9pt;
+            }
+
+            #info {
+                border: 1px solid #000;
+                height: 120px;
+                margin: 50px 0 0 100px;
+                width: 500px;
+            }
+
+            #parent1 {
+                border: 1px solid #ccc;
+                position: absolute;
+                width: 500px;
+                height: 400px;
+                left: 100px;
+                top: 200px;
+            }
+
+            #fish {
+                position: absolute;
+                left: 50px;
+                top: 100px;
+                padding: 30px;
+                margin: 50px;
+                border: 20px solid #f00;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div id="info">
+            여기에 결과 출력
+        </div>
+        <di id="parent1">
+            <img src="../chap09/images/fish1.png" id="fish">
+        </di>
+
+        <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <script>
+
+            var $info = $("#info");
+            var $fish = $("#fish");
+            
+            var result = "요소기본 크기: width=" + $fish.width() + ", height=" + $fish.height() + "<br>";
+            result += "패딩포함 크기: width=" + $fish.innerWidth() + ", height=" + $fish.innerHeight() + "<br>";
+            result += "테두리포함 크기: width=" + $fish.outerWidth() + ", height=" + $fish.outerHeight() + "<br>";
+            result += "마진포함 크기: width=" + $fish.outerWidth(true) + ", height=" + $fish.outerHeight(true) + "<br>";
+
+            $info.html(result);
+
+        </script>
+    </body>
+
+</html>

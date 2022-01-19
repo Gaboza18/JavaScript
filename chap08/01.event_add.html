@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>이벤트 등록하기</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <style>
+            body {
+                font-size: 14px;
+            }
+
+            ul.menu {
+                padding: 10px;
+                list-style: none;
+            }
+
+            ul.menu li {
+                width: 200px;
+                /* 1.5배 */
+                font-size: 1.5rem;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+                text-align: center;
+            }
+
+            li.select {
+                background-color: #ccc;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul class="menu">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li class="select">menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+            <li>menu6</li>
+        </ul>
+
+        <script type="text/javascript">
+            var $menuItems = $("ul.menu li"); // 메뉴 리스트 항목 객체
+
+            /*
+            $menuItems.on("click", function () {
+                alert($(this).html()); // 메뉴 클릭하면 li 안에있는 text 요소 alert로 출력
+            });
+            */
+
+            // 단축 이벤트의 사용
+            $menuItems.click(function () {
+                alert($(this).html()); 
+            });
+        </script>
+
+    </body>
+
+</html>

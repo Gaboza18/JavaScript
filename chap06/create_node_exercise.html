@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>메뉴 CRUD</title>
+        <style>
+            body {
+                font-size: 9pt;
+                font-family: "굴림";
+            }
+
+            ul.menu {
+                padding: 10px;
+                list-style: none;
+                border: 1px solid #000;
+            }
+
+            ul.menu li {
+                border: 1px solid #1567c5;
+                margin: 10px;
+                padding: 5px;
+            }
+
+            li.select {
+                background-color: #ccc;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+        <div>
+            <input type="text" id="menuName"/>
+            <button id="add">추가</button>
+            <button id="update">수정</button>
+            <button id="remove">삭제</button>
+            <button id="up">UP</button>
+            <button id="down">DOWN</button>
+        </div>
+        <ul class="menu">
+
+        </ul>
+        <script type="text/javascript">
+            var $menu = null; // 메뉴부분
+            var $menuName = null; // 입력 텍스트
+            var $selectItem = null;
+
+            $(document).ready(function () {
+                initialize(); // 함수 호출
+                eventInit(); // 추가 버튼 호출
+            });
+
+            function initialize() { // 필요한 객체 초기화
+                $menu = $("ul.menu");
+                $menuName = $("#menuName");
+            }
+
+            // 버튼 처리 부분을 모아 놓은 함수
+            function eventInit() {
+
+                // "추가" 버튼에 대한 처리
+                $("#add").on("click", function () {
+                    var menuStr = $menuName.val(); // 입력한 값을 menuStr 저장
+                    var $menuItem = $("<li>" + menuStr + "</li>"); // 입력값 -> 출력되는 값
+
+                    $menu.append($menuItem);
+                });
+
+                // 메뉴 항목 클릭 시, "select" 클래스 추가
+                // 아래와 같이 하면 동작하지 않음 / 이유: 클릭 이벤트가 등록될 시점에는 li 항목이 없었기 때문
+                /*
+                $("ul.menu").on("click", function(){
+                    $(this).addClass("select");
+                });
+                */
+                // 메뉴 항목 클릭 시, "select" 클래스 추가
+                $("ul.menu").on("click", "li", function () {
+                    // 이전에 선택한 항목에서 select 클래스 제거
+                    if ($selectItem != null) { // $selectItem 항목이 null이 아닐때
+                        $selectItem.removeClass("select");
+                    }
+
+                    var $item = $(this);
+                    $item.addClass("select");
+                    $selectItem = $item; // 현재 선택된 항목을 저장한다.
+                });
+
+                // 메뉴 항목 클릭 시, 수정
+                $("#update").on("click", function () {
+
+                    if ($selectItem == null) {
+                        alert("수정할 메뉴를 선택하세요."); // 메뉴를 선택하지 않고 수정을 눌렀을때
+                    } else {
+                        var menuName = $menuName.val(); // 입력창에 입력한 값을 읽어온다.
+
+                        if (menuName == "") { // 입력창에 아무것도 값이 없을때
+                            alert("텍스트 입력 하세요.");
+                        } else {
+                            $selectItem.html(menuName); // 선택항목을 입력값으로 수정
+                        }
+                    }
+                });
+
+                // 메뉴 항목 클릭 시, 삭제
+                $("#remove").on("click", function () {
+                    if($selectItem == null){
+                        alert("삭제할 메뉴를 선택하세요."); // 메뉴를 선택하지 않고 삭제를 눌렀을때
+                    }else{
+                        $selectItem.remove(); // 삭제
+                        $selectItem = null; // 메뉴가 삭제가 되었기 때문에 삭제된 값은 null 을 유지해야 한다
+                    }
+                });
+
+                // 선택한 항목 위로 이동
+                $("#up").on("click", function(){
+                    if($selectItem == null){
+                        alert("선택된 항목이 없습니다.");
+                    }else{
+                        // 선택된 항목의 이전 항목을 찾는다.
+                        var $prevItem = $selectItem.prev();
+
+                        if($prevItem){ // 이전 노드값이 있을때만 올라간다
+                            $prevItem.before($selectItem); 
+                        }
+                    }
+                });
+
+                // 선택한 항목 밑으로 이동
+                $("#down").on("click", function(){
+                    if($selectItem == null){
+                        alert("선택된 항목이 없습니다.");
+                    }else{
+                        // 선택된 항목의 다음 항목을 찾는다.
+                        var $nextItem = $selectItem.next();
+
+                        if($nextItem){ // 다음 노드값이 있을때만 내려간다
+                            $nextItem.after($selectItem);
+                        }
+                    }
+                });
+            }
+        </script>
+    </body>
+
+</html>

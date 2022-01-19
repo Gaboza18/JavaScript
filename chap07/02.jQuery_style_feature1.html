@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jQuery 에서 스타일 다루기</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../chap07/CSS/common.css">
+        <!--CSS 스타일 적용-->
+        <style>
+            /* 임베디드 스타일 지정 */
+            div {
+                margin: 30px;
+                padding: 30px;
+                font-size: 24px;
+            }
+        </style>
+
+        <script>
+            /* jQuery 에서 스타일 종류에 따른 스타일 읽기 방법 
+               스타일 종류에 관계없이 같은 방법으로 스타일을 읽을 수 있음.*/
+
+            $(document).ready(function () {
+                var $content = $("#test1");
+
+                // 인라인 스타일의 스타일 읽기
+                console.log("color= ", $content.css("color")); // rgb(255,0,0)
+
+                // 임베디드, CSS 스타일 읽기
+                console.log("border= ", $content.css("border")); // JS에서 바로 읽어올수 없음
+            });
+        </script>
+
+    </head>
+
+    <body>
+        <!--인라인 스타일 지정-->
+        <div id="test1" class="content" style="color:#f00">스타일 다루기 테스트</div>
+    </body>
+
+</html>

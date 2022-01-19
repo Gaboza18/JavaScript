@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배열 숫자 요소의 정렬</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var numbers = [5, 2, 8, 9, 3, 6, 4, 1, 77];
+
+                console.log("정렬 전: " + numbers.join(","));
+
+                numbers.sort(); // sort() 만 실행 한 경우 숫자 정렬시 문제 발생
+                console.log("정렬 후: " + numbers.join(",")); // 1,2,3,4,5,6,77,8,9 (문자열로 취급하여 6다음 77 출력)
+
+                // 숫자 정렬시 비교방법 지정
+                // a>b: return 1 / a=b: return 0 / a<b: return -1    
+                numbers.sort(function (a, b) {
+                    return a - b; // a>b -> + 리턴 -> 앞,뒤 순서 바꿈 || a<b -> - 리턴 -> 유지한다
+                });
+
+                console.log("비교 방법 지정후 정렬: " + numbers.join(","));
+
+                numbers.sort(function (a, b) {
+
+                    if (a > b) { // a가 클때 -1 리턴
+                        return -1;
+                    }
+                    if (a < b) { // a가 작을때 1 리턴 
+                        return 1;
+                    }
+                    return; // 같을때 
+                });
+                console.log("비교 방법 지정후 역순정렬: " + numbers.join(","));
+            });
+        </script>
+    </body>
+
+</html>

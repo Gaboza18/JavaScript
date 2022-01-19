@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>5번 문제</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="CSS/test4.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <h1>식료품 목록</h1>
+        <ul>
+            <li id="one" class="hot"><em>신선한</em> 토마토</li>
+            <li id="two" class="hot">식빵</li>
+            <li id="three" class="hot">참외</li>
+            <li id="four">오렌지 쥬스</li>
+        </ul>
+
+        <script type="text/javascript">
+            var $menu = $("#four");
+            var $item = $("<li>아이스크림</li>");
+            $menu.after($item);
+        </script>
+
+    </body>
+
+</html>

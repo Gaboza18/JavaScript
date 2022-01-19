@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jQuary의 기본 사용법</title>
+        <style>
+            div {
+                width: 200px;
+                height: 100px;
+                border: 1px solid #000;
+                margin: 20px;
+            }
+        </style>
+        <!-- jQuery 파일 다운로드 해서 사용하는 방법
+          <script type="text/javascript" src="../JS/jquery-3.6.0.min.js"></script> -->
+          
+        <!-- jQuery CDN 을 인터넷에서 불러와서 사용하는 방법-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){  // div 요소가 출력되기전 선언을 해도 ready() 함수를 미리 선언해서 div 가 출력이 되면 JQuery문 실행한다
+                $("div").css("border","1px solid #0000ff"); /* jQuery문 사용 div 요소 border 내용값 변경 */
+                $("#data2").css("border", "2px solid #ff0000"); /* data2 클래스를 가진 요소 border 내용값 변경 */
+            });
+        </script>
+    </head>
+
+    <body>
+        <div>div-data1</div>
+        <div id="data2">div-data2</div>
+        <div>div-data3</div>
+    </body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>이벤트 단계</title>
+        <style>
+            body {
+                font-size: 16px;
+            }
+
+            div {
+                margin: 30px;
+                border: 1px solid #000;
+                min-height: 50px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="A1">
+            A1
+            <div id="B1">
+                B1
+                <div id="C1">
+                    C1
+                </div>
+            </div>
+        </div>
+        <div id="A2">
+            A2
+            <div id="B2">
+                B2
+                <div id="C2">
+                    C2
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <script>
+            var count = 0;
+            $(document).ready(function () {
+                // 캡처 단계 이벤트 등록
+                document.addEventListener("click", function (e) {
+                    count++;
+                    console.log("01. document  phase=" + e.eventPhase, "count=" + count);
+                }, true);
+
+                document.body.addEventListener("click", function (e) {
+                    count++;
+                    console.log("02. body  phase=" + e.eventPhase, "count=" + count)
+                }, true);
+
+                $("#A1").get(0).addEventListener("click", function (e) {
+                    count++;
+                    console.log("03. A1  phase=" + e.eventPhase, "count=" + count);
+                }, true);
+
+                $("#B1").get(0).addEventListener("click", function (e) {
+                    count++;
+                    console.log("04. B1  phase=" + e.eventPhase, "count=" + count);
+                }, true);
+
+                $("#A2").get(0).addEventListener("click", function (e) {
+                    count++;
+                    console.log("05. A2  phase=" + e.eventPhase, "count=" + count);
+                }, true);
+
+                // 타깃/버블 단계 이벤트 등록 	
+                $("document").on("click", function (e) {
+                    count++;
+                    console.log("11. document phase=" + e.eventPhase, "count=" + count);
+                });
+                $("body").on("click", function (e) {
+                    count++;
+                    console.log("12. body phase=" + e.eventPhase, "count=" + count);
+                });
+                $("#A1").on("click", function (e) {
+                    count++;
+                    console.log("13. A1 phase=" + e.eventPhase, "count=" + count);
+                });
+                $("#B1").on("click", function (e) {
+                    count++;
+                    console.log("14. B1 phase=" + e.eventPhase, "count=" + count);
+                });
+                $("#A2").on("click", function (e) {
+                    count++;
+                    console.log("15. A2 phase=" + e.eventPhase, "count=" + count);
+                });
+                $("#B2").on("click", function (e) {
+                    count++;
+                    console.log("16. B2 phase=" + e.eventPhase, "count=" + count);
+                });
+            });
+        </script>
+    </body>
+
+</html>

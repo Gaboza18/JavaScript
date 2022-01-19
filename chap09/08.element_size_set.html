@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title> </title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-size: 9pt;
+            }
+
+            .nav {
+                margin: 30px 0 0 50px;
+            }
+
+            #parent1 {
+                border: 1px solid #ccc;
+                position: absolute;
+                width: 500px;
+                height: 500px;
+                left: 50px;
+                top: 100px;
+            }
+
+            #child {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                left: 100px;
+                top: 100px;
+                padding: 20px;
+                border: 30px solid #000;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <button id="move1">width()를 활용한 크기 변경</button>&nbsp; &nbsp;
+        <button id="move2">innerWidth()를 활용한 크기 변경</button><br><br>
+        <di id="parent1">
+            <div id="child"></div>
+        </di>
+
+        <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <script>
+            var $child = $("#child");
+            $("#move1").click(function () {
+                $child.width(200);
+                $child.heigth(200);
+            });
+
+            $("#move2").click(function () {
+                $child.innerWidth(200); // 패딩만 포함된 크기
+                $child.innerHeight(200);
+            })
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배열 요소의 join/split</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <style>
+            .menu {
+                list-style: none;
+                border: 1px solid #000;
+                height: 30px;
+                padding: 10px;
+            }
+            .menu li{
+                display: inline-block;
+                margin-right: 20px;
+                border: 1px solid #ccc;
+                padding: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul class="menu">
+
+        </ul>
+        <script type="text/javascript">
+            var $menu = $(".menu"); // menu id의 객체생성
+            /*
+             ** 배열에 있는 항목을 ul 태그의 li 항목으로 추가
+             */
+            var items = ["menu1", "menu2", "menu3", "menu4"];
+            var result = items.join("-"); // menu1-menu2-menu3-menu4
+            console.log(result);
+
+            // 문자열을 배열로 변환
+            var menuItems = result.split("-");
+            for (var i = 0; i < menuItems.length; i++) {
+                // 각 배열 요소를 $menu의 <li> 항목으로 추가
+                $menu.append("<li>" + menuItems[i] + "</li>");
+            }
+        </script>
+    </body>
+
+</html>

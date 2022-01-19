@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>물고기 움직이기 게임</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <style>
+            .panel {
+                position: relative;
+                width: 600px;
+                height: 400px;
+                border: 1px solid #999;
+            }
+
+            #fish {
+                position: absolute;
+                left: 250px;
+                top: 150px;
+            }
+
+            #title {
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <button id="btnStart">클릭하면 물고기가 움직여요.</button>
+        </div>
+
+        <div class="panel">
+            <img src="../images/fish1.png" id="fish">
+        </div>
+
+        <script type="text/javascript">
+            var $panel = $(".panel"); // 패널 객체 생성
+            var $fish = $("#fish"); // 물고기 객체 생성
+
+            // fish 이미자가 패널에서 벗어나지 않도록 width, height를 조정
+            var panelWidth = parseInt($panel.css("width")) - parseInt($fish.css("width")); // 가로값을 가져온다(문자열로 저장되기 때문에 정수형으로 변환)
+            var panelHeight = parseInt($panel.css("height")) - parseInt($fish.css("height"));
+
+            $("#btnStart").on("click", function () {
+
+                // 물고기를 이동할 임의의 위치를 구함
+                var fishLeft = parseInt(Math.random() * panelWidth); // 가로에 임의의 좌표
+                var fishTop = parseInt(Math.random() * panelHeight); // 세로에 임의의 좌표
+
+                $fish.css({
+                    left: fishLeft,
+                    top: fishTop
+                });
+            });
+        </script>
+    </body>
+
+</html>

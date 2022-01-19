@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>형변환의 필요성</title>
+
+        <script type="text/javascript">
+
+            var age = window.prompt("나이를 입력해 주세요: "); // 윈도우창 에서 입력을 받는 메소드 
+            // age = age + 30; // 문자열 + 임의의 타입 = 문자열
+
+            // 문자열 -> 숫자형으로 변환
+            age = parseInt(age) + 30; // parseInt( ) : 문자열 -> 숫자형으로 변환 메소드 
+            alert("결과값: " + age); // 숫자형으로 출력
+
+            /*
+             var a = "30";
+             var result = 1 + a + 30;
+             alert(result); // 13030
+
+             var result = 2 + true; // true = 1 리턴
+             alert(result); // 3
+
+             var result = "2" + true; // 문자열이기 때문에 true 문자 그대로 리턴
+             alert(result); // 2true
+            */
+        </script>
+
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

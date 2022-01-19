@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>타이머 멈추기</title>
+        <!-- jQuery 선언 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- CSS 선언 -->
+        <link rel="stylesheet" href="CSS/c03.css">
+    </head>
+
+    <body>
+        <h1>TravelWorthy</h1>
+        <button id="stop">타이머 멈추기</button><br><br>
+        <div id="info">타이머 시작!</div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var $output = $("#info");
+                var $button = $("#stop"); // <button> 요소
+                var count = 0;
+
+                var timerID = setInterval(function () { // 타이머 실행하는 함수
+                    count++;
+                    $output.html("<h2>" + count + "</h2>");
+                }, 1000);
+
+                $button.on("click", function () { //click 버튼 누르면 function 실행
+                    clearInterval(timerID); // setInterval 에서 반환된 타이머ID를 지정한다.
+                });
+                
+            });
+        </script>
+    </body>
+
+</html>

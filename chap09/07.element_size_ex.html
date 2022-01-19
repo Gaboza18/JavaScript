@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>물고기 이동</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-size: 9pt;
+            }
+
+            #move {
+                margin: 10px;
+            }
+
+            #parent1 {
+                border: 1px solid #ccc;
+                position: absolute;
+                width: 500px;
+                height: 400px;
+                left: 100px;
+                top: 200px;
+            }
+
+            #fish {
+                position: absolute;
+                left: 50px;
+                top: 100px;
+                padding: 30px;
+                margin: 50px;
+                border: 20px solid #f00;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <button id="move">이동</button><br><br>
+        <div id="parent1">
+            <img src="../chap09/images/fish1.png" id="fish">
+        </div>
+
+        <script type="text/javascript" src="../JS/jquery-3.6.0.min.js"></script>
+
+        <script>
+            $("#move").click(function () {
+                var $fish = $("#fish"); // 물고기 객체 
+                var $parent = $("#parent1"); // 부모노드 객체
+
+                var parentWidth = $parent.innerWidth(); // 패딩을 포함한 부모의 크기
+                var fishWidth = $fish.outerWidth(); // 테두리를 포함한 물고기의 크기
+                var left = parentWidth - fishWidth - parseInt($fish.css("margin-right"));
+                $fish.css("left", left);
+            });
+        </script>
+    </body>
+
+</html>

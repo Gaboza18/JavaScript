@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>마우스 클릭에 따른 물고기 위치이동</title>
+        <style>
+            #parent1 {
+                border: 1px solid #ccc;
+                position: absolute;
+                width: 500px;
+                height: 400px;
+                left: 100px;
+                top: 100px;
+                overflow: hidden;
+            }
+
+            #fish {
+                position: absolute;
+                left: 50px;
+                top: 50px;
+
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <di id="parent1">
+            <img src="../chap09/images/fish1.png" id="fish">
+        </di>
+
+        <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <script>
+            $("#parent1").click(function () {
+                
+                var left = event.pageX; // 마우스 클릭 위치 Left
+                var top = event.pageY; // 마우스 클릭 위치 top
+
+                $("#fish").offset({
+                    left: left,
+                    top: top
+                })
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prevent Default</title>
+        <script src="../JS/jquery-3.6.0.min.js"></script>
+    </head>
+        <h1>기본행동 취소 예제</h1>
+        <a href="http://www.daum.net" id="daum">다음 사이트로 이동</a> <!-- 클릭하면 사이트로 이동: 기본행동 -->
+        
+        <script type="text/javascript">
+            $("#daum").click(function(event){ // click -> 단축이벤트 사용
+                event.preventDefault(); // event의 기본행동 취소한다 -> 기본행동 취소
+            });
+        </script>
+    <body>
+
+    </body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>물고기 움직이기 게임</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <style>
+            .panel {
+                position: relative;
+                width: 600px;
+                height: 400px;
+                border: 1px solid #999;
+            }
+
+            #fish {
+                position: absolute;
+                left: 250px;
+                top: 150px;
+            }
+
+            #title {
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <button id="btn">클릭하면 물고기가 움직여요.</button>
+        </div>
+
+        <div class="panel">
+            <img src="../images/fish1.png" id="fish">
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                // 물고기 객체 생성
+                var $fish = $("#fish");
+
+                // 패널의 가로,세로 영역 구하기
+                var panelWidth = parseInt($(".panel").css("width")); // 패널 클래스 가로 값
+                var panelHeight = parseInt($(".panel").css("height")); // 패널 클래스 세로 값
+
+                // 물고기가 이동할 영역 구하기
+                panelWidth = panelWidth - parseInt($fish.css("width")); // 물고기 객체가 패널 안에서 움직일 가로영역
+                panelHeight = panelHeight - parseInt($fish.css("height")); // 물고기 객체가 패널 안에서 움직일 세로영역
+
+                $("#btn").on("click", function () {
+                    var top = parseInt(Math.random() * panelHeight);
+                    var left = parseInt(Math.random() * panelWidth);
+
+                    $fish.css({
+                        top: top,
+                        left: left
+                    });
+                });
+            });
+        </script>
+    </body>
+
+</html>

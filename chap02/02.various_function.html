@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>다양한 함수 선언 방법</title>
+        <script type="text/javascript">
+            // 매개변수를 가진 함수
+            function sum(num1, num2) {
+                document.write("num1+num2= " + (num1 + num2) + "<br>");
+            }
+
+            // 함수 호출
+            sum(10, 200);
+
+            // 리턴값이 있는 함수
+            function area(width, height) {
+                return width * height;
+            }
+
+            var area1 = area(4.15, 8.5)
+            document.write("area1= " + area1 + "<br>");
+
+            // 익명의 함수와 호출 표현식 (재사용 불가)
+            var area2 = function (width, height) { // 선언 방법은 똑같으나 함수 이름이 없다.
+                return width * height;
+            }
+            var size = area2(4, 5);
+            document.write("area2(익명함수)= " + size + "<br>");
+
+            // 즉시 함수호출 표현식
+            var area3 = (function () { // (function() {..} ());
+                var width = 3;
+                var height = 5;
+
+                return width * height;
+            }());
+
+            document.write("area3(즉시 함수 호출)= " + area3);
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Date 객체 사용하기</title>
+        <link rel="stylesheet" href="CSS/c03.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <h1>TravelWorthy</h1>
+        <div id="message">1996년 설립</div>
+        <div id="footer"></div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var today = new Date(); // 현재일자 및 시간으로 Date객체 생성
+
+                // Footer에 copyright 출력
+                var year = today.getFullYear(); // 로컬 시간을 사용하여 연도를 반환
+
+                var original = new Date('Apr 16, 1996 15:45:55'); // 주어진 날짜, 시간으로 Date 객체 생성
+
+                // 설립일 이후로 몇 년이 경과하였는지 계산(m/s 단위)
+                var difference = today.getTime() - original.getTime();
+                // 경과한 년수 계산
+                difference /= 31536000000 // 1년을 m/s 변환 값
+
+                var $msg = $("#message");
+                $msg.html("<p>" + Math.floor(difference) + "년 전통의 온라인 여행사 </p>");
+
+                var $footer = $("#footer");
+                $footer.html("<p>Copyright &copy; " + year + "</p>"); // &copy = ©
+            });
+        </script>
+    </body>
+
+</html>

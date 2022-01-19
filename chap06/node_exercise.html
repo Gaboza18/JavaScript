@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/c05.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <div id="page">
+      <h1 id="header">List</h1>
+      <h2>채소 구매하기</h2>
+      <ul>
+        <li id="one"><em>신선한</em> 상추</li>
+        <li id="two">배추</li>
+        <li id="three">토마토</li>
+        <li id="four">당근</li>
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+
+      // ul 메뉴에서 찾은 모든 노드의 요소를 순차적으로 console에 출력
+      var $menu = $("ul li");
+      $menu.each(function (index) {
+        console.log(this);
+      });
+
+      // index가 2인 노드의 class에 "hot" 추가
+      $menu.eq(2).addClass("hot");
+
+      // id가 "one"인 노드에 class "cool" 추가
+      $menu.filter("#one").addClass("cool");
+
+    </script>
+  </body>
+
+</html>

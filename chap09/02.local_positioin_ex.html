@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title> </title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-size: 9pt;
+            }
+
+            #info {
+                height: 30px;
+                margin: 50px 0 0 100px;
+                width: 500px;
+            }
+
+            #parent1 {
+                border: 1px solid #000;
+                position: absolute;
+                width: 500px;
+                height: 400px;
+                left: 100px;
+                top: 100px;
+            }
+
+            .fish {
+                position: absolute;
+                width: 120px;
+            }
+
+            .fish p {
+                position: absolute;
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+            }
+
+            #fish1 {
+                left: 50px;
+                top: 100px;
+            }
+
+            #fish2 {
+                left: 150px;
+                top: 200px;
+            }
+
+            #fish3 {
+                left: 180px;
+                top: 50px;
+            }
+
+            #fish4 {
+                left: 350px;
+                top: 200px;
+            }
+
+            #fish5 {
+                left: 50px;
+                top: 300px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div id="info">
+            <button id="run">물고기를 클릭하면 위치값이 나옵니다.</button>
+        </div>
+        <div id="parent1">
+            <div id="fish1" class="fish">
+                <p>
+                    1
+                </p><img src="../chap09/images/fish1.png">
+            </div>
+
+            <div id="fish2" class="fish">
+                <p>
+                    2
+                </p>
+                <img src="../chap09/images/fish1.png">
+            </div>
+
+            <div id="fish3" class="fish">
+                <p>
+                    3
+                </p>
+                <img src="../chap09/images/fish1.png">
+            </div>
+
+            <div id="fish4" class="fish">
+                <p>
+                    4
+                </p>
+                <img src="../chap09/images/fish1.png">
+            </div>
+
+            <div id="fish5" class="fish">
+                <p>
+                    5
+                </p>
+                <img src="../chap09/images/fish1.png">
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <script>
+            $(".fish").click(function () { // fish
+                var $target = $(this); // 클릭한 요소를 변수에 저장
+                var pos = $target.position(); // 클릭한 요소 위치값
+                
+                // Math.floor( ): 소수점 버리고 정수형 출력
+                var result = "id=" + $target.attr("id") + ", left=" + Math.floor(pos.left) + ", top=" + Math.floor(pos.top); // 속성값 구하기: .attr(" ")
+                $("#info").html(result);
+            });
+        </script>
+    </body>
+
+</html>

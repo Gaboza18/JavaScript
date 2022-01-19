@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>findnode 연습문제</title>
+        <link rel="stylesheet" href="CSS/exercise.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <ul class="tab-menu" id="tabMenu1">
+            <li class="menuitem1">google</li>
+            <li class="menuitem2">facebook</li>
+            <li class="menuitem3 select">pinterest</li>
+            <li class="menuitem4">twitter</li>
+            <li class="menuitem5">airbnb</li>
+            <li class="menuitem6">path</li>
+        </ul>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // 탭메뉴 아이템 갯수 출력 , #tabMenu li의 개수를 알림창에 출력
+                var $menuItems = $("ul.tab-menu li");
+                var index = 0;
+
+                alert("탭메뉴 아이템 갯수: " + $menuItems.length);
+
+                // 클릭한 탭 메뉴의 인덱스 값 출력하기 -> 콘솔창 으로 출력
+                $menuItems.on("click", function () {
+                    console.log("클릭한 탭 메뉴의 인덱스 값: " + $(this).index());
+                });
+
+                //1초에 한번씩 탭메뉴 아이템에 select 클래스 적용하기
+                var timerID = setInterval(function () {
+
+                    var $items = $menuItems.eq(index);
+                    $items.addClass("select"); // select 클래스 추가하는 메소드
+                    index++;
+
+                    if (index >= $menuItems.length) { 
+                        clearInterval(timerID); // interval 멈춘다
+                    }
+                }, 1000);
+            });
+        </script>
+    </body>
+
+</html>

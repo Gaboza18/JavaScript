@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>객체 생성을 이용한 배열</title>
+        <link rel="stylesheet" href="CSS/c02.css">
+    </head>
+
+    <body>
+        <h1>ElderFlower</h1>
+
+        <div class="message">Color: <span id="colors">0번 배열 값</span></div>
+        <div class="message">Color: <span id="colors1">1번 배열 값</span></div>
+        <div class="message">Color: <span id="colors2">2번 배열 값</span></div>
+     
+        <script type="text/javascript">
+
+            var colors = new Array("흰색", "파란색", "검정색"); /* 색깔 데이터를 가진 배열 선언 */
+
+            var elColor = document.getElementById("colors");
+            elColor.textContent = colors[0]; /* 0번 배열의 값을 colors id 값에 넣는다 */
+
+            var elColor = document.getElementById("colors1")
+            elColor.textContent = colors[1];
+
+            var elColor = document.getElementById("colors2");
+            elColor.textContent = colors[2];
+
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>등록 이벤트 제거</title>
+        <script src="../JS/jquery-3.6.0.min.js"></script>
+    </head>
+
+    <body>
+        <button id="on">이벤트 등록</button> &nbsp;
+        <button id="off">이벤트 제거</button> &nbsp;
+        <button id="one">일회용 이벤트</button>
+
+        <script>
+            var $btnOn = $("#on")
+
+            $("#on").click(function () {
+                alert("환영합니다!");
+            });
+
+            $("#off").click(function () {
+                // "on 버튼에 대한 이벤트 제거"
+                $btnOn.off("click");
+            });
+
+            $("#one").one("click", function () {
+                alert("이벤트를 한번만 실행합니다.");
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>버블링 활용하기1</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <style>
+            body {
+                font-size: 14px;
+            }
+
+            ul.menu {
+                padding: 10px;
+                list-style: none;
+            }
+
+            ul.menu li {
+                width: 200px;
+                /* 1.5배 */
+                font-size: 1.5rem;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+                text-align: center;
+            }
+
+            li.select {
+                background-color: #ccc;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul class="menu">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li class="select">menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+            <li>menu6</li>
+        </ul>
+
+        <script type="text/javascript">
+            // ul 요소에 클릭 이벤트 등록
+            $("ul").click(function (event) { // ul 요소에만 click 이벤트 등록하고 li 요소의 이벤트 처리는 버블링을 통해 해결한다
+                console.log("이벤트 발생 요소: " + event.target.tagName); // target: 실제 이벤트를 발생하는 이름
+
+                var $target = $(event.target);
+
+                if(event.target.tagName="LI"){
+                    alert($target.html()); 
+                }
+            });
+        </script>
+
+    </body>
+
+</html>

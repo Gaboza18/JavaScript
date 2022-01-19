@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>변수의 사용범위</title>
+
+        <script type="text/javascript">
+            var globalVar = "글로벌 변수"; /* 전역변수로 어디서나 사용가능 하다 */
+            console.log(globalVar);
+            func1(); /* 함수 호출 */
+
+            function func1() {
+                var localVar = "로컬변수"; /* 지역변수로 함수내에서만 사용가능 */
+                console.log("func1(): " + globalVar); /* 어디에서든 사용 가능 */
+                console.log("func1(): " + localVar); /* 함수내에서만 가능 */
+            }
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>스타일 값 구하기</title>
+        <style>
+            body {
+                font-size: 14px;
+            }
+
+            ul.menu {
+                padding: 10px;
+                list-style: none;
+            }
+
+            ul.menu li {
+                width: 200px;
+                /* 1.5배 */
+                font-size: 1.5rem;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+                text-align: center;
+            }
+
+            li.select {
+                background-color: #ccc;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var $content = $("ul.menu li.select");
+
+                // 스타일 값을 하나만 읽어오기
+                console.log("font-size=", $content.css("font-size")); // 16px * 1.5rem = 24px
+
+                // 여러개의 스타일 속성값 읽기
+                var info = $content.css(["width", "height"])
+                console.log("width= " + info.width, "height= " + info.height);
+            });
+        </script>
+    </head>
+
+    <body>
+        <ul class="menu">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li class="select">menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+            <li>menu6</li>
+        </ul>
+
+
+    </body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>버블링 중지</title>
+        <script src="../JS/jquery-3.6.0.min.js"></script>
+    </head>
+
+    <body>
+        <h1>버블링 중지 예제</h1>
+
+        <div id="panel">
+            <button id="btnStart">버블링 처리</button>&nbsp;
+            <button id="btnStop">버블링 중지</button>
+        </div>
+
+        <script type="text/javascript">
+            
+            document.body.addEventListener("click", function (e) {
+                console.log("01. body에 등록한 이벤트");
+            }, false);
+
+            $("#panel").click(function(){
+                console.log("02. panel에 등록한 이벤트");
+            });
+
+            $("#btnStart").click(function(){
+                console.log("03. 버블링 처리");
+            });
+
+            $("#btnStop").click(function(event){
+                console.log("03. 버블링 중지");
+                event.stopPropagation(); // 버블링 이벤트 처리 중지한다.
+            });
+
+        </script>
+    </body>
+
+</html>

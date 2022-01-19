@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Focus,Blur 이벤트(로그인 창)</title>
+
+        <link rel="stylesheet" href="../chap08/CSS/c06.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div id="page">
+            <h1>List King</h1>
+            <h2>NEW ACCOUNT</h2>
+            <!-- 고객의 개인정보 이기때문에 POST 방식 사용 -->
+            <form method="POST" action="resigter.jsp">
+                <label form="username">사용자명(ID): </label>
+                <input type="text" id="username"> <!-- ID 입력 타입: qwer1233-->
+                <div id="feedback"></div>
+
+                <label for="password">비밀번호(PWD): </label>
+                <input type="password" id="password"> <!-- PWD 입력 타입: ********-->
+
+                <input type="submit" value="회원가입"> <!-- 회원가입 창으로 이동한다 -->
+
+            </form>
+        </div>
+        <script type="text/javascript">
+            var $name = $("#username");
+            var $msg = $("#feedback");
+
+            function checkUsername() {
+                $msg.removeClass(); // 그림 초기화
+                var username = $name.val(); // 입력한 사용자명(ID)을 읽어들인다.
+
+                if (username.length < 5) { // 입력한 사용자명(ID)가 5자리 미만 일때
+                    $msg.addClass("warnig"); // 경고 그림 추가
+                    $msg.html("아이디는 5자 이상 입력하세요");
+                }
+            }
+
+            function confirmUsername() { // 아이디를 입력하지 않고 다른 이벤트를 할때
+                $msg.removeClass();
+                var username = $name.val();
+
+                if (username.length < 5) {
+                    $msg.addClass("tip"); // 팁 그림 추가
+                    $msg.html("아이디를 다시 확인해주세요");
+                } else {
+                    $msg.html("");
+                }
+            }
+
+            $name.on("focus", checkUsername); // focus 이벤트에 username이 들어오면 checkUsername 함수 호출
+            $name.on("blur", confirmUsername);
+        </script>
+    </body>
+
+</html>

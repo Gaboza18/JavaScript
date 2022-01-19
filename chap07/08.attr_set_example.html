@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>속성값 설정하기</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <img src="images/ch1.png" id="target">
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var $image = $("#target");
+
+                $image.on("click", function () {
+                    if ($image.attr("src") == "images/ch1.png") { //1번 이미지 일때
+                        $image.attr("src", "images/ch2.png"); // 2번 이미지 전환
+                    } else {
+                        $image.attr("src", "images/ch1.png"); // 1번 이미지 출력
+                    }
+                });
+            });
+        </script>
+    </body>
+
+</html>

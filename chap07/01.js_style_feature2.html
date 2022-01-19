@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS 에서 스타일 다루기</title>
+        <link rel="stylesheet" href="../chap07/CSS/common.css">
+        <!--CSS 스타일 적용-->
+        <style>
+            /* 임베디드 스타일 지정 */
+            div {
+                margin: 30px;
+                padding: 30px;
+                font-size: 24px;
+            }
+        </style>
+        <script>
+            /* 자바 스크립트 에서 스타일 설정 */
+
+            window.onload = function () { // $(document).ready(function () { });
+
+                var content = document.getElementById("test1");
+
+                // 글꼴의 크기 변경
+                // content.style.font-size = "12px"; // 본래의 css 스타일명을 사용할 수 없음.
+                content.style.fontSize = "12px"; // camel 표기법 사용해야 가능 ex) fontsize -> fontSize
+
+                // 단위를 생략할수 없음
+                content.style.fontSize = "14";
+                
+                // 여러개의 스타일을 지정할 경우 각각 작성
+                content.style.border = "4px solid #f00";
+
+              
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="test1" class="content" style="color:#f00">스타일 다루기 테스트</div>
+        <!--인라인 스타일 지정-->
+    </body>
+
+</html>

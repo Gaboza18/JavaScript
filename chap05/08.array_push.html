@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배열의 요소 추가</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            var menuItems = ["menu1", "menu2", "menu3", "menu4"];
+
+            console.log("실행전 배열의 내용: " + menuItems.join(","));
+
+            // 배열의 맨 뒤에 요소 추가
+            menuItems.push("new Menu");
+            console.log("push 실행후 배열의 내용: " + menuItems.join(","));
+
+            // 배열의 맨 앞에 요소 추가
+            menuItems.unshift("New1");
+            console.log("unshif 실행후 배열의 내용: " + menuItems.join(","));
+
+            // 배열의 맨 앞의 요소 삭제
+            menuItems.shift();
+            console.log("shift 실행후 배열의 내용: " + menuItems.join(","));
+
+            // 지정 위치에 배열 요소 추가 및 삭제
+            menuItems.splice(2, 0, "New2"); // 2번 index값 New2 넣는다 0: 추가
+            console.log("splice(추가) 실행후 배열의 내용: " + menuItems.join(","));
+
+            menuItems.splice(2, 1); // 2번 index값 New2 넣는다 1: 삭제
+            console.log("splice(삭제) 실행후 배열의 내용: " + menuItems.join(","));
+
+            // 배열 요소의 정렬
+            var users = ["홍길동", "김좌진", "이순신", "유관순"];
+            console.log("정렬전: " + users.join(","));
+            users.sort();
+            console.log("정렬후: " + users.join(",")); // ㄱ~ㅎ 순 정렬
+        </script>
+    </body>
+
+</html>

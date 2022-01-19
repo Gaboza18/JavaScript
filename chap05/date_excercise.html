@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>실시간 시간 출력</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <style>
+            #clock {
+                width: 400px;
+                height: 200px;
+                text-align: center;
+                line-height: 200px;
+                vertical-align: center;
+                border: 2px solid #000;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div id="clock">
+            00:00:00
+        </div>
+
+        <script type="text/javascript">
+           
+                var $clock = $("#clock");
+                disp_clock();
+
+                function disp_clock() {
+
+                    setInterval(function () {
+
+                        var now = new Date();
+
+                        var hours = now.getHours(); // 시간을 반환함
+                        var minutes = now.getMinutes(); // 분을 반환함
+                        var seconds = now.getSeconds(); // 초를 반환함
+
+                        $clock.text(addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds));
+
+                    }, 1000); // 1초에 한번씩 출력
+                }
+
+                function addZero(data) { // 데이터가 10보다 작으면 0을 붙혀서 출력한다 ex) 3 -> 03 
+                    if (data < 10) {
+                        data = "0" + data;
+                    }
+                    return data;
+                }
+         
+        </script>
+    </body>
+
+</html>

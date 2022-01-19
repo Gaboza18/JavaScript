@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>스타일 값 구하기</title>
+        <style>
+            body {
+                font-size: 14px;
+            }
+
+            ul.menu {
+                padding: 10px;
+                list-style: none;
+            }
+
+            ul.menu li {
+                width: 200px;
+                /* 1.5배 */
+                font-size: 1.5rem;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+                text-align: center;
+            }
+
+            li.select {
+                background-color: #ccc;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var $content = $("ul.menu li.select");
+
+                // "실행" 버튼 클릭 시 글꼴 확대 
+                $("#btn").on("click", function(){
+
+                    var size = parseInt($content.css("font-size")); // 현재 font-size 값을 정수형으로 변환후 변수에 저장
+                    $content.css("font-size", size+2); // 정수형 변환하지 않으면 문자열로 인식하여 값이 증가하지 않는다
+                    
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <button id="btn">실행</button>&nbsp;&nbsp;
+        <ul class="menu">
+            <li>menu1</li>
+            <li>menu2</li>
+            <li class="select">menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+            <li>menu6</li>
+        </ul>
+
+
+    </body>
+
+</html>
